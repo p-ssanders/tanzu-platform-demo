@@ -2,7 +2,7 @@ apiVersion: kpack.io/v1alpha2
 kind: Image
 metadata:
   name: websocket-demo
-  namespace: sample
+  namespace: websocket-demo
 spec:
   tag: harbor.tce-demo.samsanders.dev/demo-apps/websocket-demo
   serviceAccountName: harbor-service-account
