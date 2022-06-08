@@ -12,7 +12,7 @@ spec:
   source:
     git:
       url: https://github.com/p-ssanders/websocket-demo
-      revision: 9ffd1f19678fca95a0fe1503664ae043592b872d
+      revision: main
   build:
     env:
     - name: BP_JVM_VERSION

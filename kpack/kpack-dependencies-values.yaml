@@ -1,1 +1,2 @@
+# tanzu package install kpack-dependencies --package-name kpack-dependencies.community.tanzu.vmware.com --version 0.0.27 -f kpack/kpack-dependencies-values.yaml
 kp_default_repository: harbor.tce-demo.samsanders.dev/kpack/default
