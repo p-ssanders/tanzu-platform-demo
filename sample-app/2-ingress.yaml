@@ -4,7 +4,7 @@ metadata:
   name: sample
   namespace: sample
   annotations:
-    cert-manager.io/cluster-issuer: lets-encrypt
+    cert-manager.io/cluster-issuer: lets-encrypt-prod
 spec:
   tls:
   - hosts:

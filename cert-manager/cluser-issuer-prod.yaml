@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: lets-encrypt-prod
+spec:
+  acme:
+    email: hello@samsanders.dev
+    privateKeySecretRef:
+      name: aws-creds
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        route53:
+          region: us-west-2
+          accessKeyID: AKIAZDKJFDI4CRCO2R7R
+          secretAccessKeySecretRef:
+            name: external-dns-iam-credentials
+            key: secret-access-key
+    - http01:
+        ingress:
+          class: contour
