@@ -1,0 +1,10 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: websocket-demo
+  namespace: websocket-demo
+  labels:
+    workload-type: pre-built
+spec:
+  image: harbor.tce-demo.samsanders.dev/demo-apps/websocket-demo:latest

@@ -1,0 +1,16 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterSupplyChain
+metadata:
+  name: supply-chain
+spec:
+  resources:
+    - name: deployment
+      templateRef:
+        kind: ClusterTemplate
+        name: app-deployment
+  serviceAccountRef:
+    name: cartographer-sa
+    namespace: cartographer-system
+  selector:
+    workload-type: pre-built
