@@ -4,13 +4,20 @@ kind: ClusterSupplyChain
 metadata:
   name: supply-chain
 spec:
+  selector:
+    workload-type: source-code
   resources:
+    - name: build-image
+      templateRef:
+        kind: ClusterImageTemplate
+        name: image-builder
     - name: deployment
       templateRef:
         kind: ClusterTemplate
-        name: app-deployment
+        name: app-deployer
+      images:
+        - resource: build-image
+          name: built-image
   serviceAccountRef:
     name: cartographer-sa
     namespace: cartographer-system
-  selector:
-    workload-type: pre-built

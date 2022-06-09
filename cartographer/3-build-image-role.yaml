@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: build-image-role
+rules:
+  - apiGroups:
+      - kpack.io
+    resources:
+      - images
+    verbs:
+      - list
+      - create
+      - update
+      - delete
+      - patch
+      - watch
+      - get

@@ -1,10 +1,8 @@
 ---
-# template for creating a deployment from an image
-# kpack will build and publish an image upon commit (see websocket-demo/image.yaml)
 apiVersion: carto.run/v1alpha1
 kind: ClusterTemplate
 metadata:
-  name: app-deployment
+  name: app-deployer
 spec:
   template:
     apiVersion: apps/v1
@@ -25,6 +23,6 @@ spec:
         spec:
           containers:
             - name: $(workload.metadata.name)$
-              image: $(workload.spec.image)$
+              image: $(images.built-image.image)$
           imagePullSecrets:
             - name: harbor-creds

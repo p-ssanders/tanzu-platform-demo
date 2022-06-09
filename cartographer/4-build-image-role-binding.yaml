@@ -2,12 +2,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: cartographer-deployment-role-binding
+  name: cartographer-build-image-role-binding
   namespace: cartographer-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: deployments-role
+  name: build-image-role
 subjects:
   - kind: ServiceAccount
     name: cartographer-sa

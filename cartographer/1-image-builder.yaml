@@ -1,0 +1,31 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterImageTemplate
+metadata:
+  name: image-builder
+spec:
+  imagePath: .status.latestImage
+  params:
+    - name: image-registry
+      default: harbor.tce-demo.samsanders.dev/demo-apps
+  template:
+    apiVersion: kpack.io/v1alpha2
+    kind: Image
+    metadata:
+      name: $(workload.metadata.name)$
+      labels:
+        app: $(workload.metadata.name)$
+    spec:
+      tag: $(params.image-registry)$/$(workload.metadata.name)$
+      serviceAccountName: service-account
+      builder:
+        name: default
+        kind: ClusterBuilder
+      source:
+        git:
+          url: $(workload.spec.source.git.url)$
+          revision: $(workload.spec.source.git.ref.branch)$
+      build:
+        env:
+        - name: BP_JVM_VERSION
+          value: "18"

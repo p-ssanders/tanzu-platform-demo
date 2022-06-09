@@ -5,6 +5,10 @@ metadata:
   name: websocket-demo
   namespace: websocket-demo
   labels:
-    workload-type: pre-built
+    workload-type: source-code
 spec:
-  image: harbor.tce-demo.samsanders.dev/demo-apps/websocket-demo:latest
+  source:
+    git:
+      url: git@github.com:p-ssanders/websocket-demo.git
+      ref:
+        branch: main

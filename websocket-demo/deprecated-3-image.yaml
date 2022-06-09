@@ -5,13 +5,13 @@ metadata:
   namespace: websocket-demo
 spec:
   tag: harbor.tce-demo.samsanders.dev/demo-apps/websocket-demo
-  serviceAccountName: harbor-service-account
+  serviceAccountName: service-account
   builder:
     name: default
     kind: ClusterBuilder
   source:
     git:
-      url: https://github.com/p-ssanders/websocket-demo
+      url: git@github.com:p-ssanders/websocket-demo.git
       revision: main
   build:
     env:
