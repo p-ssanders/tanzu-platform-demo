@@ -1,0 +1,29 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: app-ingress-creator
+spec:
+  template:
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: $(workload.metadata.name)$-ingress
+      annotations:
+        cert-manager.io/cluster-issuer: lets-encrypt-staging
+    spec:
+      tls:
+      - hosts:
+          - $(workload.metadata.name)$.tce-demo.samsanders.dev
+        secretName: $(workload.metadata.name)$-cert
+      rules:
+      - host: $(workload.metadata.name)$.tce-demo.samsanders.dev
+        http:
+          paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: $(workload.metadata.name)$-service
+                port:
+                  number: 8080

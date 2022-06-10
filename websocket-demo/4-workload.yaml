@@ -7,6 +7,9 @@ metadata:
   labels:
     workload-type: source-code
 spec:
+  params:
+    - name: harbor-project
+      value: demo-apps
   source:
     git:
       url: git@github.com:p-ssanders/websocket-demo.git

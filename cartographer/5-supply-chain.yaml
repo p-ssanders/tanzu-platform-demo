@@ -18,6 +18,14 @@ spec:
       images:
         - resource: build-image
           name: built-image
+    - name: ingress
+      templateRef:
+        kind: ClusterTemplate
+        name: app-ingress-creator
+    - name: service
+      templateRef:
+        kind: ClusterTemplate
+        name: app-service-creator
   serviceAccountRef:
     name: cartographer-sa
     namespace: cartographer-system

@@ -4,6 +4,9 @@ kind: ClusterTemplate
 metadata:
   name: app-deployer
 spec:
+  params:
+    - name: imagepull-secret
+      default: harbor-creds
   template:
     apiVersion: apps/v1
     kind: Deployment
@@ -25,4 +28,4 @@ spec:
             - name: $(workload.metadata.name)$
               image: $(images.built-image.image)$
           imagePullSecrets:
-            - name: harbor-creds
+            - name: $(params.imagepull-secret)$

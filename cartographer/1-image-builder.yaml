@@ -6,8 +6,10 @@ metadata:
 spec:
   imagePath: .status.latestImage
   params:
-    - name: image-registry
-      default: harbor.tce-demo.samsanders.dev/demo-apps
+    - name: harbor-project
+      default: demo-apps
+    - name: harbor-service-account
+      default: service-account
   template:
     apiVersion: kpack.io/v1alpha2
     kind: Image
@@ -16,8 +18,8 @@ spec:
       labels:
         app: $(workload.metadata.name)$
     spec:
-      tag: $(params.image-registry)$/$(workload.metadata.name)$
-      serviceAccountName: service-account
+      tag: harbor.tce-demo.samsanders.dev/$(params.harbor-project)$/$(workload.metadata.name)$
+      serviceAccountName: $(params.harbor-service-account)$
       builder:
         name: default
         kind: ClusterBuilder
