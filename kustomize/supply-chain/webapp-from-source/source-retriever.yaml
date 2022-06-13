@@ -16,6 +16,7 @@ spec:
       name: $(workload.metadata.name)$
     spec:
       url: $(workload.spec.source.git.url)$
-      ref: $(workload.spec.source.git.ref.branch)$
+      ref:
+        branch: $(workload.spec.source.git.ref.branch)$
       secretRef:
         name: $(params.git-secret)$
