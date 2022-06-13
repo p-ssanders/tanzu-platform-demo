@@ -1,0 +1,20 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterSourceTemplate
+metadata:
+  name: source-retriever
+spec:
+  urlPath: .status.artifact.url
+  revisionPath: .status.artifact.revision
+  params:
+    - name: git-secret
+      default: gitlab-creds
+  template:
+    apiVersion: source.toolkit.fluxcd.io/v1beta1
+    kind: GitRepository
+    metadata:
+      name: $(workload.metadata.name)$
+    spec:
+      url: $(workload.spec.source.git.url)$
+      ref: $(workload.spec.source.git.ref.branch)$
+      secretRef: $(params.git-secret)$

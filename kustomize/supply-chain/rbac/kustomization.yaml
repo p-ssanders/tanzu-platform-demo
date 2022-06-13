@@ -1,9 +1,11 @@
 resources:
 - service-account.yaml
+- git-repository-role.yaml
 - build-image-role.yaml
 - deployments-role.yaml
 - services-role.yaml
 - ingresses-role.yaml
+- git-repository-role-binding.yaml
 - build-image-role-binding.yaml
 - deployments-role-binding.yaml
 - services-role-binding.yaml

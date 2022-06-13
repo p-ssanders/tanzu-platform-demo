@@ -1,0 +1,18 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: git-repository-role
+rules:
+  - apiGroups:
+    - source.toolkit.fluxcd.io
+    resources:
+    - gitrepositories
+    verbs:
+    - list
+    - create
+    - update
+    - delete
+    - patch
+    - watch
+    - get

@@ -1,4 +1,5 @@
 resources:
+- source-retriever.yaml
 - image-builder.yaml
 - app-deployer.yaml
 - app-service-creator.yaml

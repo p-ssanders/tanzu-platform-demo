@@ -24,9 +24,8 @@ spec:
         name: default
         kind: ClusterBuilder
       source:
-        git:
-          url: $(workload.spec.source.git.url)$
-          revision: $(workload.spec.source.git.ref.branch)$
+        blob:
+          url: $(sources.retrieved-source.url)$
       build:
         env:
         - name: BP_JVM_VERSION

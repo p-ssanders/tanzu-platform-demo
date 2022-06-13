@@ -10,6 +10,8 @@ spec:
   params:
     - name: harbor-project
       value: demo-apps
+    - name: git-secret
+      value: gitlab-creds
   source:
     git:
       url: git@github.com:p-ssanders/websocket-demo.git

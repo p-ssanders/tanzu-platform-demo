@@ -7,17 +7,24 @@ spec:
   selector:
     workload-type: source-code
   resources:
+    - name: retrieve-source
+      templateRef:
+        kind: ClusterSourceTemplate
+        name: source-retriever
     - name: build-image
       templateRef:
         kind: ClusterImageTemplate
         name: image-builder
+      sources:
+        - name: retrieved-source
+          resource: retrieve-source
     - name: deployment
       templateRef:
         kind: ClusterTemplate
         name: app-deployer
       images:
-        - resource: build-image
-          name: built-image
+        - name: built-image
+          resource: build-image
     - name: service
       templateRef:
         kind: ClusterTemplate
