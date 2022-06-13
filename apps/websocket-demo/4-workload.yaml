@@ -14,6 +14,6 @@ spec:
       value: gitlab-creds
   source:
     git:
-      url: git@github.com:p-ssanders/websocket-demo.git
+      url: ssh://git@github.com:p-ssanders/websocket-demo.git
       ref:
         branch: main
