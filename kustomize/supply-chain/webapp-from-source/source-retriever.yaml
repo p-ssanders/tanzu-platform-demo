@@ -20,3 +20,4 @@ spec:
         branch: $(workload.spec.source.git.ref.branch)$
       secretRef:
         name: $(params.git-secret)$
+      interval: 1m
