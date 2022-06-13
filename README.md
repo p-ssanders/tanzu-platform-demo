@@ -25,9 +25,9 @@ Given this cluster behavior, an application developer should be able to produce 
 1.  Pushing a commit to their git repository
 
 ##  TODO
-*   Update `ClusterTemplate` to create a `Service` and an `Ingress` in addition to a `Deployment`
 *   Implement a solution for secure secrets
 *   Implement a solution for cluster backups
+*   Implement a solution for application services like databases
 
 ##  References:
 *   [Slides](https://docs.google.com/presentation/d/1CFA5tyyMMOR-1Zdu4b9tyDhvXkLY7e8Cd6W9W50f2uE)
