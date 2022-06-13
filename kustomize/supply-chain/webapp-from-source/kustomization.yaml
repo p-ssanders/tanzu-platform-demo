@@ -1,0 +1,6 @@
+resources:
+- image-builder.yaml
+- app-deployer.yaml
+- app-service-creator.yaml
+- app-ingress-creator.yaml
+- supply-chain.yaml

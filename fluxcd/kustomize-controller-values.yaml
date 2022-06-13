@@ -1,0 +1,4 @@
+---
+namespace: kustomize-system
+limits_cpu: 1000m
+limits_memory: 1Gi

@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kustomizer
+  namespace: kustomize-system
+spec:
+  interval: 2m0s
+  path: ./kustomize
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: tce-demo
+  targetNamespace: kustomize-system
