@@ -11,7 +11,7 @@ spec:
     - name: harbor-project
       value: demo-apps
     - name: git-secret
-      value: gitlab-creds
+      value: github-creds
   source:
     git:
       url: ssh://git@github.com:22/p-ssanders/websocket-demo.git

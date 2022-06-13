@@ -20,7 +20,7 @@ The packages have been configured such that the cluster automatically:
 -   Routes traffic to applications on the cluster from the Internet based on native `Ingress` definitions
 
 Given this cluster behavior, an application developer should be able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate by:
-1.  Creating a `Secret` and `ServiceAccount` to store their Harbor credentials and GitHub repository key
+1.  Creating `Secret`s and a `ServiceAccount` to store their Harbor credentials and GitHub repository key
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository
 

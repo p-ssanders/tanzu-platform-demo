@@ -1,3 +1,4 @@
 **/*.pem
 **/*secret.yaml
 **/*.crt
+**/*.key
