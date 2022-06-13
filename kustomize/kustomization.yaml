@@ -1,3 +1,2 @@
 resources:
-- supply-chain/rbac
-- supply-chain/webapp-from-source
+- supply-chain
