@@ -4,25 +4,28 @@ This repository contains configuration for demonstrating Tanzu Community Edition
 
 I used this configuration to deploy a TCE management cluster and one TCE workload cluster.
 
-There is configuration for installing the following TCE packages:
-- [contour](https://projectcontour.io/)
-- [cert-manager](https://cert-manager.io/)
-- [external-dns](https://github.com/kubernetes-sigs/external-dns/blob/master/README.md)
-- [harbor](https://goharbor.io/)
-- [kpack](https://github.com/pivotal/kpack)
-- [cartographer](https://cartographer.sh/)
+There is [configuration](tce/README.md) for installing the following TCE packages:
+-   [contour](https://projectcontour.io/)
+-   [cert-manager](https://cert-manager.io/)
+-   [external-dns](https://github.com/kubernetes-sigs/external-dns/blob/master/README.md)
+-   [harbor](https://goharbor.io/)
+-   [kpack](https://github.com/pivotal/kpack)
+-   [cartographer](https://cartographer.sh/)
+-   [fluxcd](https://fluxcd.io/)
 
 The packages have been configured such that the cluster automatically:
 -   Builds application source code into images and publishes those images to Harbor whenever source code commits are pushed to a git repository
--   Generates `Deployment`s whenever images are published to Harbor
--   Provisions Let's Encrypt certificates for applications on the cluster based on native `Ingress` definitions
--   Creates DNS entries for applications on the cluster based on native `Ingress` definitions
--   Routes traffic to applications on the cluster from the Internet based on native `Ingress` definitions
+-   Generates a `Deployment`, `Service`, and an `Ingress` whenever images are published to Harbor
+-   Provisions Let's Encrypt certificates for applications on the cluster
+-   Creates DNS entries for applications on the cluster
+-   Routes traffic to applications on the cluster from the Internet
 
 Given this cluster behavior, an application developer should be able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate by:
-1.  Creating `Secret`s and a `ServiceAccount` to store their Harbor credentials and GitHub repository key
+1.  Creating `Secret`s and a `ServiceAccount` to store their Harbor credentials and GitHub repository access key
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository
+
+Review [websocket-demo](apps/websocket-demo) for an example.
 
 ##  TODO
 *   Implement a solution for secure secrets
