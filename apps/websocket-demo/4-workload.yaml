@@ -8,10 +8,12 @@ metadata:
     workload-type: source-code
 spec:
   params:
-    - name: harbor-project
-      value: demo-apps
     - name: git-secret
       value: github-creds
+    - name: harbor-project
+      value: demo-apps
+    - name: harbor-service-account
+      value: service-account
   source:
     git:
       url: ssh://git@github.com:22/p-ssanders/websocket-demo.git
