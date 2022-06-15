@@ -12,6 +12,9 @@ There is [configuration](tce/README.md) for installing the following TCE package
 -   [kpack](https://github.com/pivotal/kpack)
 -   [cartographer](https://cartographer.sh/)
 -   [fluxcd](https://fluxcd.io/)
+    -   [source-controller](https://github.com/fluxcd/source-controller/)
+    -   [kustomize-controller](https://github.com/fluxcd/kustomize-controller/)
+    -   [helm-controller](https://github.com/fluxcd/helm-controller/)
 
 The packages have been configured such that the cluster automatically:
 -   Builds application source code into images and publishes those images to Harbor whenever source code commits are pushed to a git repository
@@ -28,9 +31,9 @@ Given this cluster behavior, an application developer should be able to produce 
 Review [websocket-demo](apps/websocket-demo) for an example.
 
 ##  TODO
+*   Implement a solution for application services like databases
 *   Implement a solution for secure secrets
 *   Implement a solution for cluster backups
-*   Implement a solution for application services like databases
 
 ##  References:
 *   [Slides](https://docs.google.com/presentation/d/1CFA5tyyMMOR-1Zdu4b9tyDhvXkLY7e8Cd6W9W50f2uE)
