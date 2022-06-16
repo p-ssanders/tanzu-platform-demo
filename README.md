@@ -28,8 +28,6 @@ Given this cluster behavior, an application developer should be able to produce 
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository
 
-Review [websocket-demo](apps/websocket-demo) for an example.
-
 ##  TODO
 *   Implement a solution for application services like databases
 *   Implement a solution for secure secrets
