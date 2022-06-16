@@ -1,6 +1,6 @@
 #   Tanzu Community Edition Demo
 
-This repository contains configuration for demonstrating Tanzu Community Edition.
+This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/).
 
 I used this configuration to deploy a TCE management cluster and one TCE workload cluster.
 
@@ -34,9 +34,3 @@ Review [websocket-demo](apps/websocket-demo) for an example.
 *   Implement a solution for application services like databases
 *   Implement a solution for secure secrets
 *   Implement a solution for cluster backups
-
-##  References:
-*   [Slides](https://docs.google.com/presentation/d/1CFA5tyyMMOR-1Zdu4b9tyDhvXkLY7e8Cd6W9W50f2uE)
-*   [Cluster Evolution Diagrams](https://miro.com/app/board/uXjVO7K5t8c=/)
-*   [TCE Install Guide](https://tanzucommunityedition.io/docs/v0.11/aws-intro/)
-*   [Cluster Design Inspiration](https://tanzucommunityedition.io/docs/v0.11/solutions-secure-ingress/)

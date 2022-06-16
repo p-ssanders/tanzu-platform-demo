@@ -2,7 +2,7 @@
 apiVersion: carto.run/v1alpha1
 kind: ClusterSupplyChain
 metadata:
-  name: supply-chain
+  name: java-spring-from-source
 spec:
   selector:
     workload-type: source-code

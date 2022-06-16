@@ -1,4 +1,4 @@
 namespace: cartographer-system
 resources:
 - rbac
-- webapp-from-source
+- java-spring-from-source
