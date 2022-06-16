@@ -5,7 +5,7 @@ metadata:
   name: java-spring-from-source
 spec:
   selector:
-    workload-type: source-code
+    workload-type: java-spring-source-code
   resources:
     - name: retrieve-source
       templateRef:
