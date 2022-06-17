@@ -22,13 +22,13 @@ The packages have been configured such that the cluster automatically:
 -   Provisions Let's Encrypt certificates for applications on the cluster
 -   Creates DNS entries for applications on the cluster
 -   Routes traffic to applications on the cluster from the Internet
+-   Optionally creates a PostgreSQL database and binds it to an application
 
-Given this cluster behavior, an application developer should be able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate by:
-1.  Creating `Secret`s and a `ServiceAccount` to store their Harbor credentials and GitHub repository access key
+Given this cluster behavior, an application developer should be able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate, with an attached PostgreSQL database by:
+1.  Creating `Secret`s to store their Git repository access key, Harbor credentials, and desired PostgreSQL password
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository
 
 ##  TODO
-*   Implement a solution for application services like databases
 *   Implement a solution for secure secrets
 *   Implement a solution for cluster backups
