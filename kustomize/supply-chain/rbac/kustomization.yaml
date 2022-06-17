@@ -5,8 +5,10 @@ resources:
 - deployments-role.yaml
 - services-role.yaml
 - ingresses-role.yaml
+- helm-release-role.yaml
 - git-repository-role-binding.yaml
 - build-image-role-binding.yaml
 - deployments-role-binding.yaml
 - services-role-binding.yaml
 - ingresses-role-binding.yaml
+- helm-release-role-binding.yaml

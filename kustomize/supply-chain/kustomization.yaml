@@ -2,3 +2,4 @@ namespace: cartographer-system
 resources:
 - rbac
 - java-spring-from-source
+- postgresql-db
