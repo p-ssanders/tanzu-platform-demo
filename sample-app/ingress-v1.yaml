@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample
+  namespace: sample
+spec:
+  rules:
+  - host: sample.tce-demo.samsanders.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sample
+            port:
+              number: 8080

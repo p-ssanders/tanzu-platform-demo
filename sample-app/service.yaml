@@ -6,11 +6,10 @@ metadata:
   name: sample
   namespace: sample
 spec:
+  selector:
+    app: sample
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
-  selector:
-    app: sample
-status:
-  loadBalancer: {}
+

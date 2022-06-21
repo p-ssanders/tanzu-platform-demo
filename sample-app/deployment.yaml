@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       app: sample
-  strategy: {}
   template:
     metadata:
       labels:
@@ -19,5 +18,7 @@ spec:
       containers:
       - image: projects.registry.vmware.com/tce/logo:latest
         name: logo
-        resources: {}
-status: {}
+        resources:
+          limits:
+            memory: 1G
+            cpu: 100m

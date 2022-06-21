@@ -14,14 +14,20 @@ AWS_REGION=us-west-2 tanzu management-cluster upgrade --os-name amazon --os-vers
 tanzu cluster upgrade tce-demo-workload-0
 ```
 
+##  Add Package Repository
+
+```
+tanzu package repository add tce-repo --url projects.registry.vmware.com/tce/main:0.12.0 --namespace tanzu-package-repo-global
+```
+
 ##  Install Packages
 
 ```
 tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.20.1 --values-file contour/contour-config.yaml
 
-tanzu package install cert-manager --package-name cert-manager.community.tanzu.vmware.com --version 1.6.3
-
 tanzu package install external-dns --package-name external-dns.community.tanzu.vmware.com --version 0.10.0 --values-file external-dns/external-dns-config.yaml
+
+tanzu package install cert-manager --package-name cert-manager.community.tanzu.vmware.com --version 1.6.3
 
 tanzu package install harbor --package-name harbor.community.tanzu.vmware.com --version 2.4.2 --values-file harbor/harbor-values.yaml
 

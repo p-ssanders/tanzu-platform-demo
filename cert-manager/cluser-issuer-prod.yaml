@@ -16,6 +16,3 @@ spec:
           secretAccessKeySecretRef:
             name: external-dns-iam-credentials
             key: secret-access-key
-    - http01:
-        ingress:
-          class: contour

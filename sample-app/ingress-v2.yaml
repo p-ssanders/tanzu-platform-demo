@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample
+  namespace: sample
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt-staging
+spec:
+  tls:
+  - hosts:
+      - sample.tce-demo.samsanders.dev
+    secretName: sample-cert
+  rules:
+  - host: sample.tce-demo.samsanders.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sample
+            port:
+              number: 8080

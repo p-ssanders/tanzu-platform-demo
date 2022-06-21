@@ -18,6 +18,3 @@ deployment:
         secretKeyRef:
           name: external-dns-iam-credentials
           key: secret-access-key
-  securityContext: []
-  volumeMounts: []
-  volumes: []

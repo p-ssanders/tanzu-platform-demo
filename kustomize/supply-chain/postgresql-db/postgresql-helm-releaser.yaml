@@ -1,3 +1,4 @@
+# kubectl run postgresql-client --rm --tty -i --restart='Never' --namespace postgres-demo --image bitnami/postgresql:latest --env="PGPASSWORD=keepitsimple" --command -- psql --host postgresql-db-0 -U postgres-demo -d postgres-demo -p 5432
 ---
 apiVersion: carto.run/v1alpha1
 kind: ClusterTemplate
