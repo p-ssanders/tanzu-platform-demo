@@ -25,11 +25,11 @@ spec:
             namespace: helm-system
       values:
         auth:
-          database: $(workload.metadata.name)$
-          username: $(workload.metadata.name)$
+          database: $(workload.metadata.namespace)$
+          username: $(workload.metadata.namespace)$
           existingSecret: $(params.postgresql-secret)$
         commonLabels:
-          db: $(workload.metadata.name)$-postgresql
+          db: $(workload.metadata.namespace)$-postgresql
         primary:
           persistence:
             storageClass: default
