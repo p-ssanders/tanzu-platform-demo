@@ -35,6 +35,15 @@ spec:
               env:
                 - name: SPRING_PROFILES_ACTIVE
                   value: cloud
+                - name: DEBUG
+                  value: "true"
+              resources:
+                requests:
+                  memory: 200Mi
+                  cpu: 2m
+                limits:
+                  memory: 250Mi
+                  cpu: 5m
           volumes:
             - name: app-secrets
               secret:
