@@ -2,9 +2,9 @@
 #! Cluster creation basic configuration
 #! ---------------------------------------------------------------------
 
-CLUSTER_NAME: tce-demo-workload-0
+CLUSTER_NAME: development
 CLUSTER_PLAN: dev
-NAMESPACE: default
+NAMESPACE: env-development
 CNI: antrea
 
 #! ---------------------------------------------------------------------
@@ -81,19 +81,19 @@ SERVICE_CIDR: 100.64.0.0/13
 #! Autoscaler configuration
 #! ---------------------------------------------------------------------
 
-ENABLE_AUTOSCALER: false
-# AUTOSCALER_MAX_NODES_TOTAL: "0"
-# AUTOSCALER_SCALE_DOWN_DELAY_AFTER_ADD: "10m"
-# AUTOSCALER_SCALE_DOWN_DELAY_AFTER_DELETE: "10s"
-# AUTOSCALER_SCALE_DOWN_DELAY_AFTER_FAILURE: "3m"
-# AUTOSCALER_SCALE_DOWN_UNNEEDED_TIME: "10m"
-# AUTOSCALER_MAX_NODE_PROVISION_TIME: "15m"
-# AUTOSCALER_MIN_SIZE_0:
-# AUTOSCALER_MAX_SIZE_0:
-# AUTOSCALER_MIN_SIZE_1:
-# AUTOSCALER_MAX_SIZE_1:
-# AUTOSCALER_MIN_SIZE_2:
-# AUTOSCALER_MAX_SIZE_2:
+ENABLE_AUTOSCALER: true
+AUTOSCALER_MAX_NODES_TOTAL: "0"
+AUTOSCALER_SCALE_DOWN_DELAY_AFTER_ADD: "3m"
+AUTOSCALER_SCALE_DOWN_DELAY_AFTER_DELETE: "10s"
+AUTOSCALER_SCALE_DOWN_DELAY_AFTER_FAILURE: "3m"
+AUTOSCALER_SCALE_DOWN_UNNEEDED_TIME: "3m"
+AUTOSCALER_MAX_NODE_PROVISION_TIME: "5m"
+AUTOSCALER_MIN_SIZE_0:
+AUTOSCALER_MAX_SIZE_0:
+AUTOSCALER_MIN_SIZE_1:
+AUTOSCALER_MAX_SIZE_1:
+AUTOSCALER_MIN_SIZE_2:
+AUTOSCALER_MAX_SIZE_2:
 
 #! ---------------------------------------------------------------------
 #! Antrea CNI configuration

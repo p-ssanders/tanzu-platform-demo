@@ -5,26 +5,21 @@ apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"packaging.carvel.dev/v1alpha1","kind":"PackageInstall","metadata":{"annotations":{"tkg.tanzu.vmware.com/tanzu-package-ClusterRole":"harbor-default-cluster-role","tkg.tanzu.vmware.com/tanzu-package-ClusterRoleBinding":"harbor-default-cluster-rolebinding","tkg.tanzu.vmware.com/tanzu-package-Secret":"harbor-default-values","tkg.tanzu.vmware.com/tanzu-package-ServiceAccount":"harbor-default-sa"},"finalizers":["finalizers.packageinstall.packaging.carvel.dev/delete"],"generation":1,"name":"harbor","namespace":"default","uid":"dd31b719-ebd9-4ebb-99a5-d3d830dd61f2"},"spec":{"packageRef":{"refName":"harbor.community.tanzu.vmware.com","versionSelection":{"constraints":"2.3.3","prereleases":{}}},"serviceAccountName":"harbor-default-sa","values":[{"secretRef":{"name":"harbor-default-values"}}]}}
     tkg.tanzu.vmware.com/tanzu-package-ClusterRole: harbor-default-cluster-role
     tkg.tanzu.vmware.com/tanzu-package-ClusterRoleBinding: harbor-default-cluster-rolebinding
     tkg.tanzu.vmware.com/tanzu-package-Secret: harbor-default-values
     tkg.tanzu.vmware.com/tanzu-package-ServiceAccount: harbor-default-sa
     ext.packaging.carvel.dev/ytt-paths-from-secret-name.0: harbor-cluster-issuer-annotation-overlay
-  creationTimestamp: "2022-05-13T15:32:56Z"
   finalizers:
   - finalizers.packageinstall.packaging.carvel.dev/delete
   generation: 1
   name: harbor
   namespace: default
-  resourceVersion: "1275439"
-  uid: dd31b719-ebd9-4ebb-99a5-d3d830dd61f2
 spec:
   packageRef:
     refName: harbor.community.tanzu.vmware.com
     versionSelection:
-      constraints: 2.3.3
+      constraints: 2.4.2
       prereleases: {}
   serviceAccountName: harbor-default-sa
   values:

@@ -14,10 +14,10 @@ spec:
     spec:
       tls:
       - hosts:
-          - $(workload.metadata.name)$.tce-demo.samsanders.dev
+          - $(workload.metadata.name)$.development.tce-demo.samsanders.dev
         secretName: $(workload.metadata.name)$-cert
       rules:
-      - host: $(workload.metadata.name)$.tce-demo.samsanders.dev
+      - host: $(workload.metadata.name)$.development.tce-demo.samsanders.dev
         http:
           paths:
           - path: /
