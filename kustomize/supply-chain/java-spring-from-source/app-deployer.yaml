@@ -39,10 +39,10 @@ spec:
                   value: "true"
               resources:
                 requests:
-                  memory: 500M
+                  memory: 650M
                   cpu: 2m
                 limits:
-                  memory: 600M
+                  memory: 750M
                   cpu: 4m
           volumes:
             - name: app-secrets
