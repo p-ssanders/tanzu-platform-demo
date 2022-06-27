@@ -44,18 +44,18 @@ spec:
                 limits:
                   memory: 1Gi
                   cpu: 150m
-              livenessProbe:
-                httpGet:
-                  path: /actuator/health/liveness
-                  port: 8080
-                initialDelaySeconds: 5
-                periodSeconds: 5
-              readinessProbe:
-                httpGet:
-                  path: /actuator/health/readiness
-                  port: 8080
-                failureThreshold: 10
-                periodSeconds: 5
+              # livenessProbe:
+              #   httpGet:
+              #     path: /actuator/health/liveness
+              #     port: 8080
+              #   initialDelaySeconds: 5
+              #   periodSeconds: 5
+              # readinessProbe:
+              #   httpGet:
+              #     path: /actuator/health/readiness
+              #     port: 8080
+              #   failureThreshold: 10
+              #   periodSeconds: 5
           volumes:
             - name: app-secrets
               secret:
