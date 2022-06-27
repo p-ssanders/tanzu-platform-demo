@@ -10,7 +10,7 @@ spec:
     metadata:
       name: $(workload.metadata.name)$-ingress
       annotations:
-        cert-manager.io/cluster-issuer: lets-encrypt-prod
+        cert-manager.io/cluster-issuer: lets-encrypt-staging
     spec:
       tls:
       - hosts:
