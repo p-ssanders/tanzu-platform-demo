@@ -34,3 +34,4 @@ spec:
           persistence:
             storageClass: default
             size: 2Gi
+            podAntiAffinityPreset: hard
