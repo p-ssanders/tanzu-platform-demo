@@ -34,4 +34,6 @@ spec:
           storageClass: default
         primary:
           persistence:
-            size: 2Gi
+            size: 8Gi
+        shmVolume:
+          enabled: false
