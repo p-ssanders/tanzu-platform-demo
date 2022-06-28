@@ -30,8 +30,8 @@ spec:
           existingSecret: $(params.postgresql-secret)$
         commonLabels:
           db: $(workload.metadata.namespace)$-postgresql
+        global:
+          storageClass: default
         primary:
           persistence:
-            storageClass: default
             size: 2Gi
-          podAntiAffinityPreset: hard

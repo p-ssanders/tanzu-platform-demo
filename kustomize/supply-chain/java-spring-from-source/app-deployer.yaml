@@ -39,8 +39,8 @@ spec:
                   value: "true"
               # resources:
               #   requests:
-              #     memory: 750Mi
-              #     cpu: 100m
+              #     memory: 256Mi
+              #     cpu: 5m
               #   limits:
               #     memory: 1Gi
               #     cpu: 150m
@@ -48,13 +48,13 @@ spec:
               #   httpGet:
               #     path: /actuator/health/liveness
               #     port: 8080
-              #   initialDelaySeconds: 5
+              #   initialDelaySeconds: 15
               #   periodSeconds: 5
               # readinessProbe:
               #   httpGet:
               #     path: /actuator/health/readiness
               #     port: 8080
-              #   failureThreshold: 10
+              #   initialDelaySeconds: 20
               #   periodSeconds: 5
           volumes:
             - name: app-secrets
