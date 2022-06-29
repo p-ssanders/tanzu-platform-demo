@@ -2,9 +2,11 @@
 
 ##  Deploy Clusters
 
-```
+```sh
 tanzu management-cluster create --ui
-tanzu cluster create tce-demo-workload-0 --file tce-demo-workload-0.yaml
+# tanzu management-cluster permissions aws set && tanzu management-cluster create tce-demo-mgmt --file /Users/ssanders/.config/tanzu/tkg/clusterconfigs/m6x18jj2ky.yaml -v 6
+tanzu cluster create dev-team -n dev-environments -f app-team-development.yaml
+tanzu cluster scale dev-team -w 2 -n dev-environments
 ```
 
 ##  Upgrade Clusters
@@ -22,7 +24,7 @@ tanzu package repository add tce-repo --url projects.registry.vmware.com/tce/mai
 
 ##  Install Packages
 
-```
+```sh
 tanzu package install contour --package-name contour.community.tanzu.vmware.com --version 1.20.1
 
 k create ns external-dns
@@ -31,14 +33,18 @@ tanzu package install external-dns --package-name external-dns.community.tanzu.v
 
 k create ns cert-manager
 k apply -f cert-manager/iam-credentials-secret.yaml
-tanzu package install cert-manager --package-name cert-manager.community.tanzu.vmware.com --version 1.6.3
+tanzu package install cert-manager --package-name cert-manager.community.tanzu.vmware.com --version 1.8.0
 k apply -f cert-manager/cluster-issuer-staging.yaml
 k apply -f cert-manager/cluster-issuer-prod.yaml
 
 tanzu package install harbor --package-name harbor.community.tanzu.vmware.com --version 2.4.2 --values-file harbor/harbor-values-secret.yaml
+# this probably fails, might have to do pod clean up to retrigger the reconciliation
 k apply -f harbor/packageinstall-overlay.yaml
+# login to harbor
+# create kpack project
+# create tce-demo-user
 
-tanzu package install kpack --package-name kpack.community.tanzu.vmware.com --version 0.5.3 -f kpack/kpack-values.yaml
+tanzu package install kpack --package-name kpack.community.tanzu.vmware.com --version 0.5.3 -f kpack/kpack-values-secret.yaml
 
 tanzu package install kpack-dependencies --package-name kpack-dependencies.community.tanzu.vmware.com --version 0.0.27 -f kpack/kpack-dependencies-values.yaml
 
