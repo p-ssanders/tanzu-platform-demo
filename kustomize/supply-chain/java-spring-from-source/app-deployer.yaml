@@ -37,13 +37,13 @@ spec:
                   value: cloud
                 - name: DEBUG
                   value: "true"
-              # resources:
-              #   requests:
-              #     memory: 256Mi
-              #     cpu: 5m
-              #   limits:
-              #     memory: 1Gi
-              #     cpu: 150m
+              resources:
+                requests:
+                  memory: 256Mi
+                  cpu: 5m
+                limits:
+                  memory: 512Gi
+                  cpu: 10m
               # livenessProbe:
               #   httpGet:
               #     path: /actuator/health/liveness
