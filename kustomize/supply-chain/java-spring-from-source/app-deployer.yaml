@@ -40,22 +40,22 @@ spec:
               resources:
                 requests:
                   memory: 256Mi
-                  cpu: 100m
+                  cpu: 10m
                 limits:
-                  memory: 2Gi
+                  memory: 512Mi
                   cpu: 500m
-              # livenessProbe:
-              #   httpGet:
-              #     path: /actuator/health/liveness
-              #     port: 8080
-              #   initialDelaySeconds: 15
-              #   periodSeconds: 5
-              # readinessProbe:
-              #   httpGet:
-              #     path: /actuator/health/readiness
-              #     port: 8080
-              #   initialDelaySeconds: 20
-              #   periodSeconds: 5
+              livenessProbe:
+                httpGet:
+                  path: /actuator/health/liveness
+                  port: 8080
+                initialDelaySeconds: 10
+                periodSeconds: 5
+              readinessProbe:
+                httpGet:
+                  path: /actuator/health/readiness
+                  port: 8080
+                initialDelaySeconds: 15
+                periodSeconds: 5
           volumes:
             - name: app-secrets
               secret:
