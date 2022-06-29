@@ -16,7 +16,7 @@ spec:
     metadata:
       name: $(workload.metadata.name)$
       labels:
-        app: $(workload.metadata.name)$
+        build: $(workload.metadata.name)$
     spec:
       tag: harbor.tce-demo.samsanders.dev/$(params.harbor-project)$/$(workload.metadata.name)$
       serviceAccountName: $(params.harbor-service-account)$
