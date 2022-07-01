@@ -21,18 +21,10 @@ spec:
     - name: deployment
       templateRef:
         kind: ClusterTemplate
-        name: app-deployer
+        name: knative-deployer
       images:
         - name: built-image
           resource: build-image
-    - name: service
-      templateRef:
-        kind: ClusterTemplate
-        name: app-service-creator
-    - name: ingress
-      templateRef:
-        kind: ClusterTemplate
-        name: app-ingress-creator
   serviceAccountRef:
     name: cartographer-sa
     namespace: cartographer-system

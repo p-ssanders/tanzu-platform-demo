@@ -2,6 +2,7 @@
 deployment:
   args:
     - --source=ingress
+    - --source=contour-httpproxy
     - --domain-filter=tce-demo.samsanders.dev
     - --provider=aws
     - --aws-zone-type=public

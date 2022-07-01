@@ -1,7 +1,5 @@
 resources:
 - source-retriever.yaml
 - image-builder.yaml
-- app-deployer.yaml
-- app-service-creator.yaml
-- app-ingress-creator.yaml
+- knative-deployer.yaml
 - supply-chain.yaml
