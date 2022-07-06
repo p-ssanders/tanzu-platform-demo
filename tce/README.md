@@ -57,6 +57,8 @@ tanzu package install fluxcd-kustomize-controller -p kustomize-controller.fluxcd
 
 tanzu package install cartographer --package-name cartographer.community.tanzu.vmware.com --version 0.3.0
 
+tanzu package install knative --package-name knative-serving.community.tanzu.vmware.com --version 1.0.0 --values-file knative/config.yaml
+
 k apply -f fluxcd/helm/bitnami-helm-repository.yaml
 k apply -f fluxcd/kustomize/git-repository.yaml
 k apply -f fluxcd/kustomize/kustomizer.yaml

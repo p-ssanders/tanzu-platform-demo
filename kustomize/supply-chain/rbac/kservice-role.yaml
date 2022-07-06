@@ -2,12 +2,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: deployments-role
+  name: kservice-role
 rules:
   - apiGroups:
-      - apps
+      - serving.knative.dev
     resources:
-      - deployments
+      - service
     verbs:
       - list
       - create
