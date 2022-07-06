@@ -7,7 +7,7 @@ rules:
   - apiGroups:
       - serving.knative.dev
     resources:
-      - service
+      - services
     verbs:
       - list
       - create
