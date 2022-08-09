@@ -29,7 +29,7 @@ tanzu package install contour --package-name contour.community.tanzu.vmware.com 
 
 k create ns external-dns
 k apply -f external-dns/iam-credentials-secret.yaml
-tanzu package install external-dns --package-name external-dns.community.tanzu.vmware.com --version 0.10.0 --values-file external-dns/external-dns-config.yaml
+tanzu package install external-dns --package-name external-dns.community.tanzu.vmware.com --version 0.10.0 --values-file external-dns/values.yaml
 
 k create ns cert-manager
 k apply -f cert-manager/iam-credentials-secret.yaml
@@ -57,7 +57,7 @@ tanzu package install fluxcd-kustomize-controller -p kustomize-controller.fluxcd
 
 tanzu package install cartographer --package-name cartographer.community.tanzu.vmware.com --version 0.3.0
 
-tanzu package install knative --package-name knative-serving.community.tanzu.vmware.com --version 1.0.0 --values-file knative/config.yaml
+tanzu package install knative --package-name knative-serving.community.tanzu.vmware.com --version 1.0.0 --values-file knative/values.yaml
 
 k apply -f fluxcd/helm/bitnami-helm-repository.yaml
 k apply -f fluxcd/kustomize/git-repository.yaml
