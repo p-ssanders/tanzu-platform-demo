@@ -1,0 +1,6 @@
+cluster_builder: default
+service_account: default
+
+registry:
+  server: harbor.tce-demo.samsanders.dev
+  repository: cartographer/supply-chain

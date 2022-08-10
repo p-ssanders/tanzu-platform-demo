@@ -38,13 +38,19 @@ k apply -f cert-manager/cluster-issuer-staging.yaml
 k apply -f cert-manager/cluster-issuer-prod.yaml
 
 tanzu package install harbor --package-name harbor.community.tanzu.vmware.com --version 2.4.2 --values-file harbor/harbor-values-secret.yaml
-# this probably fails, might have to do pod clean up to retrigger the reconciliation
+# reconciliation will fail, it's okay
 k apply -f harbor/packageinstall-overlay.yaml
+# now delete harbor pods to retrigger the reconciliation
 
-# login to harbor
-# create tce-demo-user
-# create kpack project
-# add tce-demo-user as member
+# Harbor Setup
+#   login to harbor as admin
+#   create kpack project
+#   create cartographer project
+#   create tce-demo-user user
+#   add tce-demo-user as member to kpack
+#   login as tce-demo-user
+#   create webapp-demo project
+
 tanzu package install kpack --package-name kpack.community.tanzu.vmware.com --version 0.5.3 -f kpack/kpack-values-secret.yaml
 
 tanzu package install kpack-dependencies --package-name kpack-dependencies.community.tanzu.vmware.com --version 0.0.27 -f kpack/kpack-dependencies-values.yaml
@@ -58,6 +64,9 @@ tanzu package install fluxcd-kustomize-controller -p kustomize-controller.fluxcd
 tanzu package install cartographer --package-name cartographer.community.tanzu.vmware.com --version 0.3.0
 
 tanzu package install knative --package-name knative-serving.community.tanzu.vmware.com --version 1.0.0 --values-file knative/values.yaml
+
+
+tanzu package install cartographer-catalog --package-name cartographer-catalog.community.tanzu.vmware.com --version 0.3.0 --values-file cartographer/catalog-values.yaml
 
 k apply -f fluxcd/helm/bitnami-helm-repository.yaml
 k apply -f fluxcd/kustomize/git-repository.yaml
