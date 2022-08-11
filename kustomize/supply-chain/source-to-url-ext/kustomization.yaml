@@ -1,5 +1,4 @@
 namespace: cartographer-system
 resources:
-- rbac
-- postgresql-db
-- source-to-url-ext
+- app-with-config.yaml
+- supply-chain.yaml
