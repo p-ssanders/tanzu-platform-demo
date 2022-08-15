@@ -18,7 +18,7 @@ There is [configuration](tce/README.md) for installing the following TCE package
 
 The packages have been configured such that the cluster automatically:
 -   Builds application source code into images and publishes those images to Harbor whenever source code commits are pushed to a git repository
--   Generates a `Deployment`, `Service`, and an `Ingress` whenever images are published to Harbor
+-   Generates a [Knative Serving](https://knative.dev/docs/serving/) `Service` (as an alternative to a `Deployment`, `Service`, and an `Ingress`) whenever images are published to Harbor to run the application
 -   Provisions Let's Encrypt certificates for applications on the cluster
 -   Creates DNS entries for applications on the cluster
 -   Routes traffic to applications on the cluster from the Internet
