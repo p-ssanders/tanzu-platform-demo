@@ -1,13 +1,9 @@
-# kubectl run postgresql-client --rm --tty -i --restart='Never' --namespace postgres-demo --image bitnami/postgresql:latest --env="PGPASSWORD=keepitsimple" --command -- psql --host postgresql-db-0 -U postgres-demo -d postgres-demo -p 5432
 ---
 apiVersion: carto.run/v1alpha1
 kind: ClusterTemplate
 metadata:
-  name: postgresql-helm-releaser
+  name: postgres-helm-releaser
 spec:
-  params:
-    - name: postgresql-secret
-      default: postgresql-creds
   template:
     apiVersion: helm.toolkit.fluxcd.io/v2beta1
     kind: HelmRelease
@@ -27,7 +23,7 @@ spec:
         auth:
           database: $(workload.metadata.namespace)$
           username: $(workload.metadata.namespace)$
-          existingSecret: $(params.postgresql-secret)$
+          existingSecret: postgres-creds
         commonLabels:
           db: $(workload.metadata.namespace)$-postgresql
         global:

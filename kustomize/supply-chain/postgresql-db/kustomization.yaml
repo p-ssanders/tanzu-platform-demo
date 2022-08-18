@@ -1,3 +1,0 @@
-resources:
-- postgresql-helm-releaser.yaml
-- supply-chain.yaml

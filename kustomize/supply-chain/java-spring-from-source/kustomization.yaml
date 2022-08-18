@@ -1,5 +1,0 @@
-resources:
-- source-retriever.yaml
-- image-builder.yaml
-- knative-deployer.yaml
-- supply-chain.yaml

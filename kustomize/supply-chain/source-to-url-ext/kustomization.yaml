@@ -1,4 +1,0 @@
-namespace: cartographer-system
-resources:
-- app-with-config.yaml
-- supply-chain.yaml

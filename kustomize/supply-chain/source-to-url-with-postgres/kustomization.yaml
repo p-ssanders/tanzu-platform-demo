@@ -1,0 +1,7 @@
+namespace: cartographer-system
+resources:
+- postgres-secret-creator.yaml
+- postgres-app-config.yaml
+- postgres-helm-releaser.yaml
+- app-with-postgres-config.yaml
+- supply-chain.yaml

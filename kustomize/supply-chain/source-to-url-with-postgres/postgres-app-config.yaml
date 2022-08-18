@@ -1,0 +1,23 @@
+---
+# this is for the spring application
+# it contains yaml that configures the connection to the postgres
+# using the url,username,password from the postgres-secret-creator and the postgres-helm-releaser
+apiVersion: carto.run/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: postgres-app-config
+spec:
+  ytt: |
+    #@ load("@ytt:data", "data")
+    #@ load("@ytt:yaml", "yaml")
+    #@ load("@ytt:base64", "base64")
+    #@ url = "jdbc:postgresql://postgresql-db/{}".format(data.values.workload.metadata.name)
+    #@ username = data.values.workload.metadata.name
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: postgres-app-config
+      namespace: #@ data.values.workload.metadata.name
+    data:
+      application-cloud.yml: #@ base64.encode(yaml.encode({"spring": {"datasource":{"url": url, "username": username, "password": "keepitsimple"}}}))
