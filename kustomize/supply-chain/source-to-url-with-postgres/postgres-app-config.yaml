@@ -18,6 +18,5 @@ spec:
     kind: Secret
     metadata:
       name: postgres-app-config
-      namespace: #@ data.values.workload.metadata.name
     data:
       application-cloud.yml: #@ base64.encode(yaml.encode({"spring": {"datasource":{"url": url, "username": username, "password": "keepitsimple"}}}))

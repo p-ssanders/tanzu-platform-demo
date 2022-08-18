@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     apps.tanzu.vmware.com/workload-type: web-with-postgres
-
   params:
     - default:
         repository: cartographer/supply-chain
@@ -20,13 +19,11 @@ spec:
       name: git_implementation
     - default: ""
       name: git_secret
-
   resources:
     - name: source-provider
       templateRef:
         kind: ClusterSourceTemplate
         name: git-repository
-
     - name: image-builder
       templateRef:
         kind: ClusterImageTemplate
@@ -34,22 +31,18 @@ spec:
       sources:
         - resource: source-provider
           name: source
-
     - name: postgres-secret-creator
       templateRef:
         kind: ClusterTemplate
         name: postgres-secret-creator
-
     - name: postgres-app-config
       templateRef:
         kind: ClusterTemplate
         name: postgres-app-config
-    
     - name: postgres-helm-releaser
       templateRef:
         kind: ClusterTemplate
         name: postgres-helm-releaser
-
     - name: deployer
       templateRef:
         kind: ClusterTemplate
