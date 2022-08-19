@@ -16,16 +16,17 @@ There is [configuration](tce/README.md) for installing the following TCE package
     -   [kustomize-controller](https://github.com/fluxcd/kustomize-controller/)
     -   [helm-controller](https://github.com/fluxcd/helm-controller/)
 
-The packages have been configured such that the cluster automatically:
--   Builds application source code into images and publishes those images to Harbor whenever source code commits are pushed to a git repository
--   Generates a [Knative Serving](https://knative.dev/docs/serving/) `Service` (as an alternative to a `Deployment`, `Service`, and an `Ingress`) whenever images are published to Harbor to run the application
--   Provisions Let's Encrypt certificates for applications on the cluster
--   Creates DNS entries for applications on the cluster
--   Routes traffic to applications on the cluster from the Internet
--   Optionally creates a PostgreSQL database and binds it to an application
+The packages have been configured such that the cluster will automatically:
+-   Build application source code into images whenever source code commits are pushed to a git repository
+-   Publishes images to Harbor
+-   Generate a [Knative Serving](https://knative.dev/docs/serving/) `Service` to run the application image
+-   Deploy a PostgreSQL database and bind it to the application
+-   Provision a Let's Encrypt certificate for the application
+-   Create DNS entries for the application based on application name
+-   Route traffic from the Internet to the application using the `Host` header allowing for a single point of ingress into the cluster for any number of applications with different DNS names
 
-Given this cluster behavior, an application developer should be able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate, with an attached PostgreSQL database by:
-1.  Creating `Secret`s to store their Git repository access key, Harbor credentials, and desired PostgreSQL password
+Given this cluster behavior, an application developer is able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate, with an attached PostgreSQL database by:
+1.  Creating `Secret`s to store their Git repository access key and Harbor credentials
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
-1.  Pushing a commit to their git repository
+1.  Pushing a commit to their git repository to trigger the supply chain
 

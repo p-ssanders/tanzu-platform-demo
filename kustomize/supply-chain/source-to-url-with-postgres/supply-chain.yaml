@@ -7,18 +7,18 @@ spec:
   selector:
     apps.tanzu.vmware.com/workload-type: web-with-postgres
   params:
-    - default:
+    - name: registry
+      default:
         repository: cartographer/supply-chain
         server: harbor.tce-demo.samsanders.dev
-      name: registry
-    - default: default
-      name: cluster_builder
-    - default: default
-      name: service_account
-    - default: go-git
-      name: git_implementation
-    - default: ""
-      name: git_secret
+    - name: cluster_builder
+      default: default
+    - name: service_account
+      default: not-set
+    - name: git_implementation
+      default: go-git
+    - name: git_secret
+      default: not-set
   resources:
     - name: source-provider
       templateRef:

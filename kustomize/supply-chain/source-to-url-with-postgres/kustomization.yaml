@@ -1,5 +1,7 @@
 namespace: cartographer-system
 resources:
+- additional-cluster-role.yaml
+- additional-cluster-rolebinding.yaml
 - postgres-secret-creator.yaml
 - postgres-app-config.yaml
 - postgres-helm-releaser.yaml
