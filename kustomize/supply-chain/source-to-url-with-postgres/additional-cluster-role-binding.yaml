@@ -5,7 +5,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cartographer-catalog-default-cluster-role
+  name: cartographer-additional-cluster-role
 subjects:
 - kind: ServiceAccount
   name: cartographer-catalog-default-sa

@@ -6,6 +6,9 @@ metadata:
 spec:
   selector:
     apps.tanzu.vmware.com/workload-type: web-with-postgres
+  serviceAccountRef:
+    name: cartographer-catalog-default-sa
+    namespace: default
   params:
     - name: registry
       default:
