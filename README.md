@@ -2,7 +2,7 @@
 
 This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/).
 
-I used this configuration to deploy a TCE management cluster and one TCE workload cluster.
+This configuration assumes a TCE management cluster and one TCE workload cluster where applications will run. The workload cluster assumes multi-tenancy through namespaces.
 
 There is [configuration](tce/README.md) for installing the following TCE packages:
 -   [contour](https://projectcontour.io/)
@@ -17,16 +17,44 @@ There is [configuration](tce/README.md) for installing the following TCE package
     -   [helm-controller](https://github.com/fluxcd/helm-controller/)
 
 The packages have been configured such that the cluster will automatically:
--   Build application source code into images whenever source code commits are pushed to a git repository
--   Publishes images to Harbor
--   Generate a [Knative Serving](https://knative.dev/docs/serving/) `Service` to run the application image
+-   Build application source code into an image when commits are pushed to the application's git repository
+-   Publish the image to Harbor
+-   Deploy a [Knative Serving](https://knative.dev/docs/serving/) `Service` to run the application image
 -   Deploy a PostgreSQL database and bind it to the application
--   Provision a Let's Encrypt certificate for the application
 -   Create DNS entries for the application based on application name
 -   Route traffic from the Internet to the application using the `Host` header allowing for a single point of ingress into the cluster for any number of applications with different DNS names
+-   Provision a Let's Encrypt certificate for the application's route
 
-Given this cluster behavior, an application developer is able to produce a running application with ingress from the Internet, a DNS name, and a valid Let's Encrypt certificate, with an attached PostgreSQL database by:
-1.  Creating `Secret`s to store their Git repository access key and Harbor credentials
+Given this cluster behavior, an application developer is able to produce a running application with an attached PostgreSQL database, a DNS name, ingress from the Internet, and a valid Let's Encrypt certificate by simply:
+1.  Creating a `Secret` to store their application's git repository access key
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
-1.  Pushing a commit to their git repository to trigger the supply chain
+1.  Pushing a commit to their git repository to trigger the "source-to-url-with-postgres" supply chain
 
+##  Example Workload
+
+```yaml
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: webapp-demo
+  namespace: dev-team
+  labels:
+    apps.tanzu.vmware.com/workload-type: web-with-postgres
+spec:
+  params:
+    - name: git_secret
+      value: github-creds
+  source:
+    git:
+      ref:
+        branch: main
+      url: ssh://git@github.com:22/p-ssanders/tce-demo-webapp.git
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "18"
+  env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: cloud
+```
