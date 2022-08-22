@@ -35,5 +35,5 @@
     imagePullSecrets:
     - name: harbor-credentials
     ```
-1.  Apply [role bindings](role-binding.yaml) to the service account (for some reason this is required by kapp?)
-*TODO* what else?
+1.  Apply [role](role.yaml) & [role bindings](role-binding.yaml) to the service account so it can create resources in the dev team's namespace
+1.  Apply a workload per app

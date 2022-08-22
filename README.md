@@ -32,7 +32,7 @@ Given this cluster behavior, an application developer is able to produce a runni
 
 ##  Onboarding
 
-There is some manual setup required to onboard a new development team to this cluster. See [tce/onboarding/README.md](tce/onboarding/README.md) for details.
+There is some manual setup required to onboard a new development team to this cluster. See [Onboarding](tce/onboarding/README.md) for details.
 
 ##  Example Workload
 

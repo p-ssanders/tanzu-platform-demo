@@ -27,10 +27,6 @@ spec:
       templateRef:
         kind: ClusterTemplate
         name: harbor-secret-creator
-    # - name: service-account-creator
-    #   templateRef:
-    #     kind: ClusterTemplate
-    #     name: service-account-creator
     - name: source-provider
       templateRef:
         kind: ClusterSourceTemplate
