@@ -21,16 +21,16 @@ spec:
     - name: git_implementation
       default: go-git
     - name: git_secret
-      default: not-set
+      default: git-credentials
   resources:
     - name: harbor-secret-creator
       templateRef:
         kind: ClusterTemplate
         name: harbor-secret-creator
-    - name: service-account-creator
-      templateRef:
-        kind: ClusterTemplate
-        name: service-account-creator
+    # - name: service-account-creator
+    #   templateRef:
+    #     kind: ClusterTemplate
+    #     name: service-account-creator
     - name: source-provider
       templateRef:
         kind: ClusterSourceTemplate

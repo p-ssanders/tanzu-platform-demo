@@ -18,10 +18,6 @@ kind: ClusterTemplate
 metadata:
   name: app-with-postgres-config
 spec:
-  params:
-    - name: service_account
-      default: default
-
   ytt: |
     #@ load("@ytt:data", "data")
     #@ load("@ytt:yaml", "yaml")

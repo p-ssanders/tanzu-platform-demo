@@ -2,7 +2,7 @@
 
 This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/).
 
-This configuration assumes a TCE management cluster and one TCE workload cluster where applications will run. The workload cluster assumes multi-tenancy through namespaces.
+This configuration assumes an existing TCE management cluster and a TCE workload cluster where applications will run. The workload cluster assumes multi-tenancy through namespaces.
 
 There is [configuration](tce/README.md) for installing the following TCE packages:
 -   [contour](https://projectcontour.io/)
@@ -30,6 +30,46 @@ Given this cluster behavior, an application developer is able to produce a runni
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository to trigger the "source-to-url-with-postgres" supply chain
 
+##  Onboarding
+
+There is some manual setup required to onboard a new development team to this cluster.
+1.  Create a namepsace for the new team
+    ```yaml
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: dev-team
+    ```
+1.  Create a git repository for the new teams' app
+1.  Create a secret with an SSH key for the git repository
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: git-credentials
+      namespace: dev-team
+    type: Opaque
+    data:
+      identity: BASE64_PRIVATE_KEY
+      known_hosts: BASE64_KNOWN_HOSTS
+    ```
+
+1.  Create a service account for the namespace
+    ```yaml
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: service-account
+      namespace: dev-team
+    secrets:
+    - name: harbor-credentials # supply chain will create this
+    - name: git-credentials
+    imagePullSecrets:
+    - name: harbor-credentials
+    ```
+
+*TODO* what else?
+
 ##  Example Workload
 
 ```yaml
@@ -44,7 +84,7 @@ metadata:
 spec:
   params:
     - name: git_secret
-      value: github-creds
+      value: git-credentials
   source:
     git:
       ref:
