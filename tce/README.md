@@ -46,10 +46,6 @@ k apply -f harbor/packageinstall-overlay.yaml
 #   login to harbor as admin
 #   create kpack project
 #   create cartographer project
-#   create tce-demo-user user
-#   add tce-demo-user as member to kpack
-#   login as tce-demo-user
-#   create webapp-demo project
 
 tanzu package install kpack --package-name kpack.community.tanzu.vmware.com --version 0.5.3 -f kpack/kpack-values-secret.yaml
 

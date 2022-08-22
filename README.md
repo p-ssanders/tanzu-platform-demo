@@ -67,7 +67,10 @@ There is some manual setup required to onboard a new development team to this cl
     imagePullSecrets:
     - name: harbor-credentials
     ```
-
+1.  Create a Harbor user
+    1.  Username: name of dev team (e.g.: `dev-team`)
+    1.  Password: Keepitsimple1
+1.  Add the Harbor user as a member of the `cartographer` project with maintainer role
 *TODO* what else?
 
 ##  Example Workload
