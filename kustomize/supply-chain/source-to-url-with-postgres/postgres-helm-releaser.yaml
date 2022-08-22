@@ -21,11 +21,11 @@ spec:
             namespace: helm-system
       values:
         auth:
-          database: $(workload.metadata.namespace)$
-          username: $(workload.metadata.namespace)$
+          database: $(workload.metadata.name)$
+          username: $(workload.metadata.name)$
           existingSecret: postgres-creds
         commonLabels:
-          db: $(workload.metadata.namespace)$-postgresql
+          db: $(workload.metadata.name)$-postgresql
         global:
           storageClass: default
         primary:
