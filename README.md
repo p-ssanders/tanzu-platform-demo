@@ -34,6 +34,10 @@ Given this cluster behavior, an application developer is able to produce a runni
 
 There is some manual setup required to onboard a new development team to this cluster. See [Onboarding](tce/onboarding/README.md) for details.
 
+##  Conventions
+
+The conventions and assumptions built into this platform are documented [here](CONVENTIONS.md).
+
 ##  Example Workload
 
 ```yaml
