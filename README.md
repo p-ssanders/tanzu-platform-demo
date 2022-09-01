@@ -28,14 +28,6 @@ Given this behavior, an application developer is able to produce a running appli
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository to trigger the "source-to-url-with-postgres" supply chain
 
-##  Onboarding
-
-There is some manual setup required to onboard a new development team to this platform. See [Onboarding](tce/onboarding/README.md) for details.
-
-##  Conventions
-
-The conventions and assumptions built into this platform are documented [here](CONVENTIONS.md).
-
 ##  Example Workload
 
 ```yaml
@@ -64,3 +56,11 @@ spec:
   - name: SPRING_PROFILES_ACTIVE
     value: cloud
 ```
+
+##  Onboard a Development Team
+
+See [Onboarding](tce/onboarding/README.md) for details.
+
+##  Conventions
+
+This platform has conventions built into it a team must consider, and assumptions it makes about a team's application for that application to succeed in the supply chains. See [Conventions](CONVENTIONS.md) for details.
