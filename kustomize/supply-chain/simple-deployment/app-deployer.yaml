@@ -1,0 +1,54 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterTemplate
+metadata:
+  name: app-deployer
+spec:
+  params:
+    - name: service-account
+      default: service-account
+  template:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: $(workload.metadata.name)$-deployment
+      labels:
+        app: $(workload.metadata.name)$
+    spec:
+      revisionHistoryLimit: 2
+      selector:
+        matchLabels:
+          app: $(workload.metadata.name)$
+      template:
+        metadata:
+          labels:
+            app: $(workload.metadata.name)$
+        spec:
+          serviceAccountName: $(params.service-account)$
+          containers:
+            - name: $(workload.metadata.name)$
+              image: $(images.built-image.image)$
+              env:
+                - name: SPRING_PROFILES_ACTIVE
+                  value: cloud
+                - name: DEBUG
+                  value: "true"
+              # resources:
+              #   requests:
+              #     memory: "256Mi"
+              #     cpu: "10m"
+              #   limits:
+              #     memory: "1Gi"
+              #     cpu: "500m"
+              # livenessProbe:
+              #   httpGet:
+              #     path: /actuator/health/liveness
+              #     port: 8080
+              #   initialDelaySeconds: 15
+              #   periodSeconds: 5
+              # readinessProbe:
+              #   httpGet:
+              #     path: /actuator/health/readiness
+              #     port: 8080
+              #   initialDelaySeconds: 25
+              #   periodSeconds: 5

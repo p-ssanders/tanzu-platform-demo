@@ -1,3 +1,4 @@
 namespace: cartographer-system
 resources:
+- simple-deployment
 - source-to-url-with-postgres

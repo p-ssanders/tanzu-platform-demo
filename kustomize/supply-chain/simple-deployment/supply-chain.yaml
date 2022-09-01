@@ -1,0 +1,38 @@
+---
+apiVersion: carto.run/v1alpha1
+kind: ClusterSupplyChain
+metadata:
+  name: simple-deployment
+spec:
+  selector:
+    workload-type: simple
+  serviceAccountRef:
+    name: cartographer-catalog-default-sa
+    namespace: default
+  resources:
+    - name: retrieve-source
+      templateRef:
+        kind: ClusterSourceTemplate
+        name: source-retriever
+    - name: build-image
+      templateRef:
+        kind: ClusterImageTemplate
+        name: image-builder
+      sources:
+        - name: retrieved-source
+          resource: retrieve-source
+    - name: deployment
+      templateRef:
+        kind: ClusterTemplate
+        name: app-deployer
+      images:
+        - name: built-image
+          resource: build-image
+    - name: service
+      templateRef:
+        kind: ClusterTemplate
+        name: service-creator
+    - name: ingress
+      templateRef:
+        kind: ClusterTemplate
+        name: ingress-creator

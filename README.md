@@ -1,10 +1,8 @@
 #   Tanzu Community Edition Demo
 
-This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/).
+This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/) by using it to build a platform.
 
-This configuration assumes an existing TCE management cluster and a TCE workload cluster where applications will run. The workload cluster assumes multi-tenancy through namespaces.
-
-There is [configuration](tce/README.md) for installing the following TCE packages:
+The platform is built using the following TCE packages:
 -   [contour](https://projectcontour.io/)
 -   [cert-manager](https://cert-manager.io/)
 -   [external-dns](https://github.com/kubernetes-sigs/external-dns/blob/master/README.md)
@@ -16,7 +14,7 @@ There is [configuration](tce/README.md) for installing the following TCE package
     -   [kustomize-controller](https://github.com/fluxcd/kustomize-controller/)
     -   [helm-controller](https://github.com/fluxcd/helm-controller/)
 
-The packages have been configured such that the cluster will automatically:
+The packages have been configured such that the platform (cluster) will automatically:
 -   Build application source code into an image when commits are pushed to the application's git repository
 -   Publish the image to Harbor
 -   Deploy a [Knative Serving](https://knative.dev/docs/serving/) `Service` to run the application image
@@ -25,14 +23,14 @@ The packages have been configured such that the cluster will automatically:
 -   Route traffic from the Internet to the application using the `Host` header allowing for a single point of ingress into the cluster for any number of applications with different DNS names
 -   Provision a Let's Encrypt certificate for the application's route
 
-Given this cluster behavior, an application developer is able to produce a running application with an attached PostgreSQL database, a DNS name, ingress from the Internet, and a valid Let's Encrypt certificate by simply:
+Given this behavior, an application developer is able to produce a running application with an attached PostgreSQL database, a DNS name, ingress from the Internet, and a valid Let's Encrypt certificate by simply:
 1.  Creating a `Secret` to store their application's git repository access key
 1.  Creating a `Workload` definition that references the git repository where source code is pushed
 1.  Pushing a commit to their git repository to trigger the "source-to-url-with-postgres" supply chain
 
 ##  Onboarding
 
-There is some manual setup required to onboard a new development team to this cluster. See [Onboarding](tce/onboarding/README.md) for details.
+There is some manual setup required to onboard a new development team to this platform. See [Onboarding](tce/onboarding/README.md) for details.
 
 ##  Conventions
 

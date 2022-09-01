@@ -1,0 +1,8 @@
+namespace: cartographer-system
+resources:
+- source-retriever.yaml
+- image-builder.yaml
+- app-deployer.yaml
+- service-creator.yaml
+- ingress-creator.yaml
+- supply-chain.yaml
