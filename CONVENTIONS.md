@@ -2,6 +2,19 @@
 
 The platform is a TCE management cluster and a TCE workload cluster where applications will run. The workload cluster can achieve multi-tenancy through namespaces, or it could just be a single-tenant cluster.
 
+The platform is built using the following packages:
+
+-   [contour](https://projectcontour.io/) as a reverse proxy for ingress into the cluster
+-   [cert-manager](https://cert-manager.io/) for automated certificate management
+-   [external-dns](https://github.com/kubernetes-sigs/external-dns/blob/master/README.md) for automated DNS record management
+-   [harbor](https://goharbor.io/) to store and scan images
+-   [kpack](https://github.com/pivotal/kpack) to build source code into images
+-   [cartographer](https://cartographer.sh/) to coordinate the steps to turn source code into running application
+-   [fluxcd](https://fluxcd.io/)
+    -   [source-controller](https://github.com/fluxcd/source-controller/) for app-related GitOps
+    -   [kustomize-controller](https://github.com/fluxcd/kustomize-controller/) for platform-related GitOps
+    -   [helm-controller](https://github.com/fluxcd/helm-controller/) for Helm-based application deployments (e.g.: PostgreSQL)
+
 The platform supports two supply chains, both of which assume a Spring Boot application:
 
 -   `simple-deployment` -- Retrieve source code from a git repository, build it into an image, run the image on the cluster using kubernetes-native objects. Gets a URL, certificate, and ingress from the Internet.

@@ -1,12 +1,16 @@
-#   TCE Cluster Setup
+#   TCE Platform Setup
 
-##  Deploy Clusters
+This setup assumes that a [TCE management cluster](https://tanzucommunityedition.io/docs/v0.12/getting-started/) has been created.
+
+The commands assume the present working directory to be the root directory of the repository.
+
+Please update the configuration files as necessary or relevant.
+
+##  Deploy Workload Cluster
 
 ```sh
-tanzu management-cluster create --ui
-# tanzu management-cluster permissions aws set && tanzu management-cluster create tce-demo-mgmt --file /Users/ssanders/.config/tanzu/tkg/clusterconfigs/m6x18jj2ky.yaml -v 6
-tanzu cluster create dev-team -n dev-environments -f app-team-development.yaml
-tanzu cluster scale dev-team -w 2 -n dev-environments
+tanzu cluster create dev-team -n dev-environments -f tce/app-team-development.yaml
+tanzu cluster scale dev-team -w 3 -n dev-environments
 ```
 
 ##  Upgrade Clusters
@@ -60,7 +64,6 @@ tanzu package install fluxcd-kustomize-controller -p kustomize-controller.fluxcd
 tanzu package install cartographer --package-name cartographer.community.tanzu.vmware.com --version 0.3.0
 
 tanzu package install knative --package-name knative-serving.community.tanzu.vmware.com --version 1.0.0 --values-file knative/values.yaml
-
 
 tanzu package install cartographer-catalog --package-name cartographer-catalog.community.tanzu.vmware.com --version 0.3.0 --values-file cartographer/catalog-values.yaml
 

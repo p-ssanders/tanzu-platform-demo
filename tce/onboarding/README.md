@@ -36,4 +36,5 @@
     - name: harbor-credentials
     ```
 1.  Apply [role](role.yaml) & [role bindings](role-binding.yaml) to the service account so it can create resources in the dev team's namespace
+1.  Provide the developers with the `kubeconfig` to access the cluster.
 1.  Apply a workload per app

@@ -2,17 +2,7 @@
 
 This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/) by using it to build a platform.
 
-The platform is built using the following TCE packages:
--   [contour](https://projectcontour.io/) as a reverse proxy for ingress
--   [cert-manager](https://cert-manager.io/) for automated certificate management
--   [external-dns](https://github.com/kubernetes-sigs/external-dns/blob/master/README.md) for automated DNS record management
--   [harbor](https://goharbor.io/) to store and scan images
--   [kpack](https://github.com/pivotal/kpack) to build source code into images
--   [cartographer](https://cartographer.sh/) to coordinate the steps to turn source code into running application
--   [fluxcd](https://fluxcd.io/)
-    -   [source-controller](https://github.com/fluxcd/source-controller/) for app-related GitOps
-    -   [kustomize-controller](https://github.com/fluxcd/kustomize-controller/) for platform-related GitOps
-    -   [helm-controller](https://github.com/fluxcd/helm-controller/) for Helm-based application deployments (e.g.: PostgreSQL)
+The platform is built using a number of TCE packages.
 
 The packages have been configured such that the platform (cluster) will automatically:
 -   Build application source code into an image when commits are pushed to the application's git repository
@@ -40,9 +30,6 @@ metadata:
   labels:
     apps.tanzu.vmware.com/workload-type: web-with-postgres
 spec:
-  params:
-    - name: git_secret
-      value: git-credentials
   source:
     git:
       ref:
@@ -57,10 +44,14 @@ spec:
     value: cloud
 ```
 
+##  Deploy the Platform
+
+See [Deployment](tce/README.md) for details.
+
 ##  Onboard a Development Team
 
 See [Onboarding](tce/onboarding/README.md) for details.
 
-##  Conventions
+##  Conventions & Assumptions
 
 This platform has conventions built into it a team must consider, and assumptions it makes about a team's application for that application to succeed in the supply chains. See [Conventions](CONVENTIONS.md) for details.
