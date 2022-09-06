@@ -1,4 +1,4 @@
-#   Tanzu Community Edition Demo
+#   Tanzu Community Edition Platform Demo
 
 This repository contains configuration for demonstrating [Tanzu Community Edition](https://tanzucommunityedition.io/) by using it to build a platform.
 
