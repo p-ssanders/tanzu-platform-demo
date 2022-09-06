@@ -46,11 +46,11 @@ spec:
 
 ##  Deploy the Platform
 
-See [Deployment](tce/README.md) for details.
+See [Deployment](tce/) for details.
 
 ##  Onboard a Development Team
 
-See [Onboarding](tce/onboarding/README.md) for details.
+See [Onboarding](tce/onboarding/) for details.
 
 ##  Conventions & Assumptions
 
