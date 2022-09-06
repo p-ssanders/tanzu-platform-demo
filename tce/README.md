@@ -13,13 +13,6 @@ tanzu cluster create dev-team -n dev-environments -f tce/app-team-development.ya
 tanzu cluster scale dev-team -w 3 -n dev-environments
 ```
 
-##  Upgrade Clusters
-
-```
-AWS_REGION=us-west-2 tanzu management-cluster upgrade --os-name amazon --os-version 2 --os-arch amd64
-tanzu cluster upgrade tce-demo-workload-0
-```
-
 ##  Add Package Repository
 
 ```

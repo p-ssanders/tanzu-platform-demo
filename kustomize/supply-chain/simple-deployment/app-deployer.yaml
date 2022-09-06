@@ -33,22 +33,3 @@ spec:
                   value: cloud
                 - name: DEBUG
                   value: "true"
-              # resources:
-              #   requests:
-              #     memory: "256Mi"
-              #     cpu: "10m"
-              #   limits:
-              #     memory: "1Gi"
-              #     cpu: "500m"
-              # livenessProbe:
-              #   httpGet:
-              #     path: /actuator/health/liveness
-              #     port: 8080
-              #   initialDelaySeconds: 15
-              #   periodSeconds: 5
-              # readinessProbe:
-              #   httpGet:
-              #     path: /actuator/health/readiness
-              #     port: 8080
-              #   initialDelaySeconds: 25
-              #   periodSeconds: 5

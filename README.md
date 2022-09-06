@@ -9,7 +9,7 @@ The packages have been configured such that the platform (cluster) will automati
 -   Publish the image to Harbor
 -   Deploy a [Knative Serving](https://knative.dev/docs/serving/) `Service` to run the application image
 -   Deploy a PostgreSQL database and bind it to the application
--   Create DNS entries for the application based on application name
+-   Create DNS entries for the application
 -   Route traffic from the Internet to the application using the `Host` header allowing for a single point of ingress into the cluster for any number of applications with different DNS names
 -   Provision a Let's Encrypt certificate for the application's route
 

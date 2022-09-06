@@ -1,5 +1,10 @@
-# tanzu package install harbor --package-name harbor.community.tanzu.vmware.com --version 2.3.3 --values-file harbor/harbor-values.yaml
-# k apply -f harbor/packageinstall-overlay.yaml
+---
+# this overlay is used to annotate Harbor's Ingress with the cert-manager annotation
+# so that cert-manager manages certificates for Harbor
+#
+# it works by modifying the Harbor PackageInstall to add the
+# "ext.packaging.carvel.dev/ytt-paths-from-secret-name" annotation
+# which references a secret that contains the overlay itself
 
 apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
@@ -9,6 +14,7 @@ metadata:
     tkg.tanzu.vmware.com/tanzu-package-ClusterRoleBinding: harbor-default-cluster-rolebinding
     tkg.tanzu.vmware.com/tanzu-package-Secret: harbor-default-values
     tkg.tanzu.vmware.com/tanzu-package-ServiceAccount: harbor-default-sa
+    # this is the important part
     ext.packaging.carvel.dev/ytt-paths-from-secret-name.0: harbor-cluster-issuer-annotation-overlay
   finalizers:
   - finalizers.packageinstall.packaging.carvel.dev/delete
